@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>MEMORAMA</title>
+      <style>
+         @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap'); /* Estilo gamer */
+
+         body {
+            margin: 0;
+            background: black;
+            overflow: hidden;
+            font-family: 'Press Start 2P', cursive; /* Fuente gamer */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+         }
+
+         #stats {
+            color: white;
+            padding: 1rem;
+            font-size: 2rem;
+            text-align: center;
+            margin-top: 1rem;
+            background: rgba(0, 0, 0, 0.5);
+            border: 3px solid #05d1fe;
+            border-radius: 10px;
+            width: 100%;
+         }
+         
+         #wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+         }
+
+         #game {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* Seis cartas por fila */
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+            margin-top: 1rem;
+         }
+         
+         .card {
+            width: 120px; /* Cartas más anchas */
+            height: 130px;
+            margin: 1rem;
+            position: relative;
+            transition: transform 0.5s;
+            transform-style: preserve-3d;
+         }
+         
+         .card.active {
+            transform: rotateY(180deg);
+         }
+         
+         .card div {
+            width: 100%;
+            height: 100%;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            backface-visibility: hidden;
+            pointer-events: none;
+         }
+         
+         .card .face {
+            background: #05d1fe;
+            transform: rotateY(180deg);
+            color: black;
+            font-size: 4rem;
+         }
+         
+         .card .back {
+            border: 3px solid #05d1fe;
+            background: url(imagenes/pac.gif) center / contain no-repeat;
+         }
+
+         #restart {
+            margin-top: 2rem;
+            padding: 1rem 2rem;
+            font-size: 1.5rem;
+            background-color: #05d1fe;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none; /* Oculto al inicio */
+         }
+      </style>
+   </head>
+   <body>
+      <div id="stats">0 intentos</div>
+      <div id="wrapper">
+         <div id="game"></div>
+         <button id="restart" onclick="restartGame()">Reiniciar juego</button>
+      </div>
+
+      <script>
+         const totalCards = 12;
+         const availableImages = [
+            'imagenes/css.jpg', 
+            'imagenes/eclipse.jpg', 
+            'imagenes/html.jpg', 
+            'imagenes/js.jpg',
+            'imagenes/pseint.jpg', 
+            'imagenes/visual.jpg'
+         ];
+         let cards = [];
+         let selectedCards = [];
+         let valuesUsed = [];
+         let currentMove = 0;
+         let currentAttempts = 0;
+         let pairsFound = 0;
+
+         let cardTemplate = '<div class="card"><div class="back"></div><div class="face"></div></div>';
+
+         function activate(e) {
+            if (currentMove < 2) {
+               if ((!selectedCards[0] || selectedCards[0] !== e.target) && !e.target.classList.contains('active')) {
+                  e.target.classList.add('active');
+                  selectedCards.push(e.target);
+
+                  if (++currentMove == 2) {
+                     currentAttempts++;
+                     document.getElementById('stats').innerHTML = currentAttempts + ' intentos';
+
+                     if (selectedCards[0].querySelectorAll('.face img')[0].src == selectedCards[1].querySelectorAll('.face img')[0].src) {
+                        pairsFound++;
+                        selectedCards = [];
+                        currentMove = 0;
+
+                        if (pairsFound === totalCards / 2) {
+                           document.getElementById('restart').style.display = 'block'; // Mostrar botón de reinicio
+                        }
+
+                     } else {
+                        setTimeout(() => {
+                           selectedCards[0].classList.remove('active');
+                           selectedCards[1].classList.remove('active');
+                           selectedCards = [];
+                           currentMove = 0;
+                        }, 600);
+                     }
+                  }
+               }
+            }
+         }
+
+         function randomValue() {
+            let rnd = Math.floor(Math.random() * totalCards * 0.5);
+            let values = valuesUsed.filter(value => value === rnd);
+            if (values.length < 2) {
+               valuesUsed.push(rnd);
+            } else {
+               randomValue();
+            }
+         }
+
+         function getFaceValue(value) {
+            return availableImages[value];
+         }
+
+         function initGame() {
+            cards = [];
+            selectedCards = [];
+            valuesUsed = [];
+            currentMove = 0;
+            currentAttempts = 0;
+            pairsFound = 0;
+
+            document.getElementById('game').innerHTML = '';
+            document.getElementById('stats').innerHTML = '0 intentos';
+            document.getElementById('restart').style.display = 'none';
+
+            for (let i = 0; i < totalCards; i++) {
+               let div = document.createElement('div');
+               div.innerHTML = cardTemplate;
+               cards.push(div);
+               document.querySelector('#game').append(cards[i]);
+               randomValue();
+
+               let img = document.createElement('img');
+               img.src = getFaceValue(valuesUsed[i]);
+               img.style.width = '100%';
+               img.style.height = '100%';
+               cards[i].querySelectorAll('.face')[0].appendChild(img);
+
+               cards[i].querySelectorAll('.card')[0].addEventListener('click', activate);
+            }
+         }
+
+         function restartGame() {
+            initGame(); // Reiniciar todo el juego
+         }
+
+         // Inicializa el juego al cargar la página
+         initGame();
+      </script>
+   </body>
+</html>

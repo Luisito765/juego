@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Mulish:wght@800&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Mulish';
+}
+body{
+    background: url(fondo.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    color: #fff;
+    height: 100vh;
+}
+section{
+   max-width: 90%;
+   width: 100%;
+   padding: 50px;
+   margin: auto;
+   text-align: center;
+}
+
+#pantalla-inicio{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#pantalla-juego{
+    display: none;
+}
+#pantalla-final{
+    display: flex;
+}
+
+/* PANTALLA INICIO */
+#pantalla-inicio h2{
+    font-size: 60px;
+    text-shadow: 3px 3px 10px #000;
+
+}
+#pantalla-inicio h2 span{
+    color: #ffff0d;
+}
+#pantalla-inicio button{
+    font-size: 30px;
+    display: inline-block;
+    border: none;
+    padding: 10px 30px;
+    margin-top: 30px;
+    cursor: pointer;
+    background:#1cff03;
+    color:#000;
+}
+#pantalla-inicio button:hover{
+    background-color:#ffff0d;
+}
+
+/* PANTALLA JUEGO */
+#pantalla-juego h2{
+    font-size: 40px;
+    text-shadow: 3px 3px 10px #000;
+    width: 400px;
+    margin: auto;
+    margin-bottom: 10px;
+}
+#pantalla-juego h2 span{
+    color: #ffff0d;
+}
+#pantalla-juego .contenedor-pais{
+    margin-top: 40px;
+}
+
+#pantalla-juego .contenedor-pais .letra{
+    display: inline-block;
+    max-width: 100px;
+    max-height: 100px;
+    border-radius: 10px;
+    width: 100%;
+    color: #000;
+    background-color: #fff;
+    font-size: 50px;
+    margin: 2px;
+    text-align: center;
+    font-family: 'Mulish';
+    font-weight: 800;
+    line-height: 80px;
+}
+#pantalla-juego input{
+    display: inline-block;
+    font-size: 50px;
+    background: transparent;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid #fff;
+    margin-top: 40px;
+    text-align: center;
+    color: #fff;
+    letter-spacing: 4PX;
+}
+#myProgress {
+    width: 300px;
+    margin: auto;
+    background:#1cff03;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    margin-top: 50px;
+}
+  
+#myBar {
+    width: 1%;
+    height: 30px;
+    background-color:#176aff;
+}
+
+#pantalla-juego .acertadas{
+    margin-top: 30px;
+    color: #fff;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+/* PANTALLA FINAL */
+#pantalla-final{
+    font-size: 30px;
+    display: none;
+    flex-direction: column;
+}
+#pantalla-final h2{
+    margin-bottom: 30px;
+    text-decoration: underline;
+}
+
+#pantalla-final h3 span{
+    display: block;
+    font-size: 70px;
+    color: #1cff03;
+}
+#pantalla-final button{
+    width: fit-content;
+    margin: auto;
+    font-size: 30px;
+    display: inline-block;
+    border: none;
+    padding: 10px 30px;
+    margin-top: 30px;
+    cursor: pointer;
+    background:#1cff03;
+    color:#000;
+}
+#pantalla-final button:hover{
+    cursor: pointer;
+    background:#ffff0d;
+
+}
+@media screen and (max-width:1000px) {
+    section{
+        width: 100%;
+    }
+    #pantalla-juego .contenedor-pais .letra{
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        font-size: 20px;
+    }
+    #pantalla-juego input{
+        display: block;
+        width: 80%;
+        margin: 40px auto;
+        font-size: 30px;
+    }
+}
+    </style>
+    <title>Letras Desordenadas</title>
+</head>
+<body>
+    <section id="pantalla-inicio">
+        <h2>Ordena las <span>letras</span></h2>
+        <h2>y adivina la<span> etiquta</span></h2>
+        <button onclick="comenzarJuego()">JUGAR AHORA!</button>
+    </section>
+    <section id="pantalla-juego">
+        <h2>Ordena las <span>etiquetas</span></h2>
+        <h2>y adivina la <span>funcion</span></h2>
+
+        <div class="contenedor-pais" id="pais">
+            <div class="letra">L</div>
+            <div class="letra">T</div>
+            <div class="letra">M</div>
+            <div class="letra">H</div>
+        </div>
+
+        <input type="text" id="paisIngresado" onkeyup="comparar()">
+
+        <div id="myProgress">
+            <div id="myBar"></div>
+        </div>
+
+        <div class="acertadas">
+            <i class="fa-solid fa-thumbs-up"></i>
+            <span id="contador">0</span>
+        </div>
+    </section>s
+    <section id="pantalla-final">
+        <h2>RESULTADO FINAL</h2>
+        <h3 id="resultado">LOGRASTE DESCUBRIR <span id="acertadas">0</span>ETIQUETAS</h3>
+        <button onclick="comenzarJuego()">JUGAR OTRA VEZ!</button>
+    </section>
+
+    <script>
+        let paises = [];
+//arreglo que guarda los paises para jugar
+paises = ["STYLE", "COLOR", "DISPLAY", "TABLE", "CUSRSOR", "CSS", "JAVA", "HOVER", "SHADOW", "FLEX","JUSTIFI"];
+//arreglo donde se guradaran los paises desordenados
+let paisesDesordenados=[];
+//variable que guarda la posicion actual
+let posJuegoActual = 0;
+//variable que guarda la cantidad acertada
+let cantidadAcertados = 0;
+
+//funcion para desordenar los paises
+function desordenarPaises(){
+    for(var i=0;i<paises.length;i++){
+        //convertimos el pais en un arreglo
+        let pais = paises[i];
+        pais = pais.split('');
+    
+        let paisDesordenado;
+    
+        //desordenamos el areglo
+        paisDesordenado = pais.sort(function(){return Math.random() - 0.5});
+    
+        //Convertimos el arreglo a string
+        paisDesordenado = paisDesordenado.toString();
+        paisDesordenado = paisDesordenado.replace(/,/g,"");
+    
+        //Guardamos el pais en el arreglo de paises desordenads
+        paisesDesordenados.push(paisDesordenado);
+    }
+}
+
+function mostrarNuevoPais(){
+
+    //controlo si terminaron las palabras
+    if(posJuegoActual >= paises.length){
+        mostrarPantallaFinal();
+    }
+    let contenedorPais = document.getElementById("pais");
+    //eliminamos todo lo que tiene el div del pais
+    contenedorPais.innerHTML="";
+
+    let pais = paisesDesordenados[posJuegoActual];
+    pais = pais.split('');
+
+    x=0;
+    clearInterval(idInterval);
+    move();
+    for(i=0;i<pais.length;i++){
+        var div = document.createElement("div");
+        div.className = "letra";
+        div.innerHTML = pais[i];
+        contenedorPais.appendChild(div);
+    }
+
+}
+
+function mostrarPantallaFinal(){
+    clearInterval(idInterval);
+    document.getElementById("pantalla-juego").style.display = "none";
+    document.getElementById("pantalla-final").style.display = "flex";
+    document.getElementById("acertadas").innerHTML = cantidadAcertados;
+}
+
+
+
+
+//Funcion que compara el pais ingresado con el pais correcto
+function comparar(){
+    var paisOrdanedo = paises[posJuegoActual];
+    var paisIngresado = document.getElementById("paisIngresado").value;
+    paisIngresado = paisIngresado.toUpperCase();
+
+    if(paisOrdanedo == paisIngresado){
+        posJuegoActual++;
+        cantidadAcertados++;
+        document.getElementById("contador").innerHTML = cantidadAcertados;
+        paisIngresado = document.getElementById("paisIngresado").value="";
+        mostrarNuevoPais();
+    }
+}
+
+
+
+let x = 0;
+let idInterval;
+function move() {
+  if (x == 0) {
+    x= 1;
+    let elem = document.getElementById("myBar");
+    let width = 1;
+    idInterval = setInterval(frame, 60);
+    function frame() {
+      if (width >= 100) {
+        clearInterval(idInterval);
+        x = 0;
+        posJuegoActual++;
+        paisIngresado = document.getElementById("paisIngresado").value="";
+        mostrarNuevoPais();
+      } else {
+        width++;
+        elem.style.width = width + "%";
+      }
+    }
+  }
+}
+
+function comenzarJuego(){
+    paisesDesordenados=[];
+    posJuegoActual = 0;
+    cantidadAcertados = 0;
+    desordenarPaises();
+    document.getElementById("pantalla-inicio").style.display = "none";
+    document.getElementById("pantalla-juego").style.display = "block";
+    document.getElementById("pantalla-final").style.display = "none";
+    mostrarNuevoPais();
+    document.getElementById("contador").innerHTML = 0;
+    document.getElementById("paisIngresado").focus();
+}
+
+    </script>
+</body>
+</html>
