@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GameX - Sitio web de videojuegos</title>
+
+  <!-- 
+    - enlace de favicon
+  -->
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+  <!-- 
+    - enlace de css personalizado
+  -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <!-- 
+    - enlace de fuente de google
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Poppins:wght@400;500;700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body id="top">
+
+  <!-- 
+    - #ENCABEZADO
+  -->
+
+  <header class="header">
+
+    <!-- 
+      - superposición
+    -->
+    <div class="overlay" data-overlay></div>
+
+    <div class="container">
+
+      <a href="#" class="logo">
+        <img src="./assets/images/logo.svg" alt="Logo de GameX">
+      </a>
+
+      <button class="nav-open-btn" data-nav-open-btn>
+        <ion-icon name="menu-outline"></ion-icon>
+      </button>
+
+      <nav class="navbar" data-nav>
+
+        <div class="navbar-top">
+
+          <a href="#" class="logo">
+            <img src="./assets/images/logo.svg" alt="Logo de GameX">
+          </a>
+
+          <button class="nav-close-btn" data-nav-close-btn>
+            <ion-icon name="close-outline"></ion-icon>
+          </button>
+
+        </div>
+
+        <ul class="navbar-list">
+
+          <li>
+            <a href="#hero" class="navbar-link">Inicio</a>
+          </li>
+
+          <li>
+            <a href="#about" class="navbar-link">Acerca de</a>
+          </li>
+
+          <li>
+            <a href="#tournament" class="navbar-link">Torneo</a>
+          </li>
+
+          <li>
+            <a href="#gears" class="navbar-link">Productos</a>
+          </li>
+
+          <li>
+            <a href="INDEX/index.html" class="navbar-link">Jugar</a>
+          </li>
+
+        </ul>
+
+        <ul class="nav-social-list">
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-twitter"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-github"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-youtube"></ion-icon>
+            </a>
+          </li>
+
+        </ul>
+
+      </nav>
+
+      <div class="header-actions">
+
+        <button class="search">
+          <ion-icon name="search-outline"></ion-icon>
+        </button>
+
+        <button class="btn-sign_in">
+
+          <div class="icon-box">
+            <ion-icon name="log-in-outline"></ion-icon>
+          </div>
+
+          <span>Iniciar sesión</span>
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </header>
+
+  <!-- 
+    - #PRINCIPAL
+  -->
+
+  <main>
+    <article>
+
+      <!-- 
+        - #HERO
+      -->
+
+      <section class="hero" id="hero">
+        <div class="container">
+
+          <p class="hero-subtitle">Semestre num 5°</p>
+
+          <h1 class="h1 hero-title">CECyTEM</h1>
+
+          <div class="btn-group">
+
+            <button class="btn btn-primary">
+              <span>Ver en vivo</span>
+
+              <ion-icon name="play-circle"></ion-icon>
+            </button>
+
+            <button class="btn btn-link">Crear sueños</button>
+
+          </div>
+
+        </div>
+      </section>
+
+      <div class="section-wrapper">
+
+        <!-- 
+          - #ACERCA DE
+        -->
+
+        <section class="about" id="about">
+          <div class="container">
+
+            <figure class="about-banner">
+
+              <img src="./assets/images/about-img.png" alt="Forma de M" class="about-img">
+
+              <img src="./assets/images/character-1.png" alt="Personaje de videojuego" class="character character-1">
+
+              <img src="./assets/images/character-2.png" alt="Personaje de videojuego" class="character character-2">
+
+              <img src="./assets/images/character-3.png" alt="Personaje de videojuego" class="character character-3">
+
+            </figure>
+
+            <div class="about-content">
+
+              <p class="about-subtitle">Encuentra experiencias unicas</p>
+
+              <h2 class="about-title">Experiencia solo para compañeros <strong>estudiantes</strong> </h2>
+
+              <p class="about-text">
+                Sumérgete en un mundo de diversión y conocimientos. Aquí, cada videojuego está diseñado no solo para entretener, sino para desafiar tu mente y desarrollar tus habilidades mientras te diviertes. Desde estrategias complejas hasta juegos de lógica, cada experiencia te reta a pensar de manera creativa y a mejorar tus capacidades de resolución de problemas.
+
+Elige tu aventura, selecciona un juego y prepárate para aprender de una forma completamente nueva. Con gráficos envolventes, desafíos emocionantes y aprendizaje continuo, GameLearn es el lugar donde crecer como jugador también significa crecer como persona.
+              </p>
+
+              <p class="about-bottom-text">
+                <ion-icon name="arrow-forward-circle-outline"></ion-icon>
+
+                <span>Afinará tu cerebro y enfoque</span>
+              </p>
+
+            </div>
+
+          </div>
+        </section>
+
+        <!-- 
+          - #TORNEO
+        -->
+
+        <section class="tournament" id="tournament">
+          <div class="container">
+
+            <div class="tournament-content">
+
+              <p class="tournament-subtitle">Revisa nuestro próximo</p>
+
+              <h2 class="h3 tournament-title">¡Torneos de videojuegos!</h2>
+
+              <p class="tournament-text">
+                Interactua con otros jugadores para obtener mas experiencia, se uno de de nuestros mejores jugadores.
+              </p>
+
+              <button class="btn btn-primary">Únete a nosotros</button>
+
+            </div>
+
+            <div class="tournament-prize">
+
+              <h2 class="h3 tournament-prize-title">Fondo de premios</h2>
+
+              <data value="80000">ENTRAR</data>
+
+              <figure>
+                <img src="./assets/images/prize-img.png" alt="Imagen de premio">
+              </figure>
+
+            </div>
+
+            <div class="tournament-winners">
+
+              <h2 class="h3 tournament-winners-title">Últimos ganadores</h2>
+
+              <ul class="tournament-winners-list">
+
+                <li>
+                  <div class="winner-card">
+
+                    <figure class="card-banner">
+                      <img src="./assets/images/winner-img-1.png" alt="Imagen del ganador">
+                    </figure>
+
+                    <h3 class="h5 card-title">1er lugar</h3>
+
+                  </div>
+                </li>
+
+                <li>
+                  <div class="winner-card">
+
+                    <figure class="card-banner">
+                      <img src="./assets/images/winner-img-2.png" alt="Imagen del ganador">
+                    </figure>
+
+                    <h3 class="h5 card-title">2do lugar</h3>
+
+                  </div>
+                </li>
+
+              </ul>
+
+            </div>
+
+          </div>
+        </section>
+
+        <!-- 
+          - #EQUIPOS
+        -->
+
+        <section class="gears" id="gears">
+          <div class="container">
+
+            <h2 class="h2 section-title">Algunos de nuestros productos</h2>
+
+            <ul class="gears-list">
+
+              <li>
+                <div class="gears-card">
+
+                  <div class="card-banner">
+
+                    <a href="#">
+                      <img src="./assets/images/gears-img-1.png" alt="Audífonos">
+                    </a>
+
+                    <button class="share">
+                      <ion-icon name="share-social"></ion-icon>
+                    </button>
+
+                    <div class="card-time-wrapper">
+                      <ion-icon name="time-outline"></ion-icon>
+
+                      <span>En 4 días</span>
+                    </div>
+
+                  </div>
+
+                  <div class="card-content">
+
+                    <div class="card-title-wrapper">
+
+                      <h3 class="h3 card-title">Audífonos</h3>
+
+                      <p class="card-subtitle">e-sports</p>
+
+                    </div>
+
+                    <div class="card-prize">$18</div>
+
+                  </div>
+
+                  <div class="card-actions">
+
+                    <button class="btn btn-primary">
+                      <ion-icon name="add-outline"></ion-icon>
+
+                      <span>Añadir al carrito</span>
+                    </button>
+
+                    <button class="btn card-btn">
+                      <ion-icon name="heart-outline"></ion-icon>
+                    </button>
+
+                  </div>
+
+                </div>
+              </li>
+
+              <li>
+                <div class="gears-card">
+
+                  <div class="card-banner">
+
+                    <a href="#">
+                      <img src="./assets/images/gears-img-2.png" alt="Ratón para gaming">
+                    </a>
+
+                    <button class="share">
+                      <ion-icon name="share-social"></ion-icon>
+                    </button>
+
+                    <div class="card-time-wrapper">
+                      <ion-icon name="time-outline"></ion-icon>
+
+                      <span>En 6 días</span>
+                    </div>
+
+                  </div>
+
+                  <div class="card-content">
+
+                    <div class="card-title-wrapper">
+
+                      <h3 class="h3 card-title">Control gaming</h3>
+
+                      <p class="card-subtitle">FPS</p>
+
+                    </div>
+
+                    <div class="card-prize">$35</div>
+
+                  </div>
+
+                  <div class="card-actions">
+
+                    <button class="btn btn-primary">
+                      <ion-icon name="add-outline"></ion-icon>
+
+                      <span>Añadir al carrito</span>
+                    </button>
+
+                    <button class="btn card-btn">
+                      <ion-icon name="heart-outline"></ion-icon>
+                    </button>
+
+                  </div>
+
+                </div>
+              </li>
+
+              <li>
+                <div class="gears-card">
+
+                  <div class="card-banner">
+
+                    <a href="#">
+                      <img src="./assets/images/gears-img-3.png" alt="Teclado gaming">
+                    </a>
+
+                    <button class="share">
+                      <ion-icon name="share-social"></ion-icon>
+                    </button>
+
+                    <div class="card-time-wrapper">
+                      <ion-icon name="time-outline"></ion-icon>
+
+                      <span>En 2 días</span>
+                    </div>
+
+                  </div>
+
+                  <div class="card-content">
+
+                    <div class="card-title-wrapper">
+
+                      <h3 class="h3 card-title">ICONO gaming</h3>
+
+                      <p class="card-subtitle">RGB</p>
+
+                    </div>
+
+                    <div class="card-prize">$49</div>
+
+                  </div>
+
+                  <div class="card-actions">
+
+                    <button class="btn btn-primary">
+                      <ion-icon name="add-outline"></ion-icon>
+
+                      <span>Añadir al carrito</span>
+                    </button>
+
+                    <button class="btn card-btn">
+                      <ion-icon name="heart-outline"></ion-icon>
+                    </button>
+
+                  </div>
+
+                </div>
+              </li>
+
+            </ul>
+
+          </div>
+        </section>
+
+        <!-- 
+          - #CONTACTO
+        -->
+
+       
+      </div>
+
+    </article>
+  </main>
+
+  <!-- 
+    - #PIE DE PÁGINA
+  -->
+  <!-- 
+    - custom js link
+  -->
+  <script src="./assets/js/script.js"></script>
+
+  <!-- 
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@6.0.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@6.0.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>
